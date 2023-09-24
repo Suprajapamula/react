@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+        <style>
+            td{
+                border:1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="myContainer"></div>
+        <script type="text/babel">
+            var arrOfObj=[{
+                firstname:"supraja",
+                lastname:"pamula",
+                age:21,
+                gender:"female"
+            },
+            {
+                firstname:"sunitha",
+                lastname:"pamula",
+                age:44,
+                gender:"female"
+            },
+            {
+                firstname:"ambadas",
+                lastname:"pamula",
+                age:45,
+                gender:"male"
+            },
+            {
+                firstname:"sairam",
+                lastname:"pamula",
+                age:17,
+                gender:"male"
+            },
+            {
+                firstname:"ram",
+                lastname:"boda",
+                age:22,
+                gender:"male"
+            }
+        ]
+        var table=<table border="1px solid black">{
+            arrOfObj.map((person)=>{
+                return (<tr style={person.gender==="female"?{backgroundColor:"pink"}:{backgroundColor:null}}>
+                            <td>{person.firstname}</td>
+                            <td>{person.lastname}</td>
+                            <td>{person.age}</td>
+                            <td>{person.gender}</td>
+                    </tr>)
+            })
+        }
+        </table>
+        ReactDOM.render(table,document.getElementById("myContainer"))
+        </script>
+    </body>
+</html>

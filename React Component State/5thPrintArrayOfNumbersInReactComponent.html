@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    </head>
+    <body>
+        <div id="d1"></div>
+        <script type="text/babel">
+            var Res=function(){
+                var [x,setX]=React.useState([12,2,3,4,5,9,8,40])
+                 return <div>{
+                    x.map((a)=>{
+                       return (<h1>{a}</h1>)
+                    })
+                }</div>
+            }
+            ReactDOM.render(<Res></Res>,document.getElementById("d1"));
+        </script>
+    </body>
+</html>

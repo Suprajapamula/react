@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    </head>
+    <body>
+        <div id="d1"></div>
+        <script type="text/babel">
+            var TodoList=function(){
+            var [todos,setTodos]=React.useState(["clear bills","payloans"]);
+            function newTask(){
+                var newTask=document.getElementById("input").value;
+                setTodos([...todos,newTask]);
+            }
+                return (<div>
+                    <h1>TodoList</h1>
+                    <input type="text" id="input"/>
+                    <button onClick={newTask}>Add Todo</button>
+                        <ul>{
+                        todos.map((todo)=>{
+                            return <li>{todo}</li>
+                        })
+                        }</ul>
+                    </div>)
+        }
+        ReactDOM.render(<TodoList></TodoList>,document.getElementById("d1"))
+        </script>
+    </body>
+</html>

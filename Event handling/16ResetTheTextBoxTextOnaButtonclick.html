@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    </head>
+    <body>
+        <div id="myContainer"></div>
+        <script type="text/babel">
+            var Res=function(){
+                function display(){
+                    document.getElementById("heading").innerHTML=document.getElementById("input").value;
+                }
+            function clearText(){
+                document.getElementById("input").value="";
+                document.getElementById("heading").innerHTML="";
+            }
+            return <div>
+               <input type="text" id="input" onKeyUp={display}/>
+               <h1 id="heading"></h1>
+               <button onClick={clearText}>clear text</button>
+             </div>
+            }
+             ReactDOM.render(<Res/>,document.getElementById("myContainer"));
+        </script> 
+    </body>
+</html>

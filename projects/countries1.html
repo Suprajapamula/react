@@ -1,0 +1,88 @@
+<html>
+  <head>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.0/axios.min.js" integrity="sha512-aoTNnqZcT8B4AmeCFmiSnDlc4Nj/KPaZyB5G7JnOnUEkdNpCZs1LCankiYi01sLTyWy+m2P+W4XM+BuQ3Q4/Dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+      #ulList {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        background-color: rgb(93, 82, 30);
+      }
+      #liList {
+        margin: 20px;
+        list-style: none;
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+        border: 2px solid rgb(13, 13, 152);
+        background-color: rgb(240, 199, 205);
+      }
+      #liList:hover {
+        background-color: rgb(128, 245, 152);
+        box-shadow: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="d1"></div>
+    <script type="text/babel">
+      function Countries() {
+        var [allCountries, setAllCountries] = React.useState([]);
+        var [searchValue, setSearchValue] = React.useState("");
+
+        React.useEffect(() => {
+          axios.get("https://restcountries.com/v3/all").then((res) => {
+            setAllCountries([...res.data]);
+          });
+        }, []);
+
+        const handleSearchChange = (e) => {
+          setSearchValue(e.target.value);
+        };
+
+        const filteredCountries = allCountries.filter((country) =>
+          country.name.common.toLowerCase().includes(searchValue.toLowerCase())
+        );
+
+        return (
+          <div>
+            <h1 style={{ textAlign: "center", color: "red" }}>COUNTRIES</h1>
+            <input
+              type="search"
+              placeHolder="Enter Country Name"
+              value={searchValue}
+              onChange={handleSearchChange}
+            />
+            <ul id="ulList">
+              {filteredCountries.length > 0 ? (
+                filteredCountries.map((a) => (
+                  <li id="liList" key={a.name.common}>
+                    <h1 style={{ width: "300px", color: "blue" }}>{a.name.common}</h1>
+                    <img
+                      style={{
+                        height: "200px",
+                        width: "200px",
+                        padding: "10px",
+                        borderRadius: "150px",
+                      }}
+                      src={a.flags[1]}
+                      alt={a.name.common}
+                    />
+                    <h4>Population: {a.population}</h4>
+                    <i>Capital: <b>{a.capital}</b></i>
+                    <h6>Area: {a.area}</h6>
+                  </li>
+                ))
+              ) : (
+                <p>No matching countries found.</p>
+              )}
+            </ul>
+          </div>
+        );
+      }
+      ReactDOM.render(<Countries />, document.getElementById("d1"));
+    </script>
+  </body>
+</html>

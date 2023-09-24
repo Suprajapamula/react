@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    </head>
+    </head>
+    <body>
+        <div id="myContainer"></div>
+        <script type="text/babel">
+            var Res=function(){
+            var [ar,setAr]=React.useState([12,13,45,34]);
+            ar.map((a)=>{
+                return (<ul> 
+                       <li style={(a%2===0)?{color:"green"}:{color:"red"}}>{a}</li>
+                   </ul>)
+                })
+            }
+            ReactDOM.render(<Res></Res>,document.getElementById("myContainer"))
+        </script>
+    </body>
+</html>

@@ -1,0 +1,19 @@
+<html>
+<head>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+</head>
+<body>
+    <div id="d1"></div>
+    <script type="text/babel">
+        var Res=function(){
+            var x=+prompt()
+            var [x,setX]=React.useState(x);
+            return (<div>{(x>0)?(<img src="https://tse1.mm.bing.net/th?id=OIP.QTu5UK91ALz7HteBaVLabgHaEo&pid=Api&rs=1&c=1&qlt=95&w=169&h=105"/>):(<img src="https://tse1.mm.bing.net/th?id=OIP.bxPVEkbjhp9Osye5ruAffAHaGM&pid=Api&rs=1&c=1&qlt=95&w=120&h=100"/>)}</div>)
+                   
+        }
+     ReactDOM.render(<Res></Res>,document.getElementById("d1"))
+    </script>
+</body>
+</html>

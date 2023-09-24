@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    </head>
+    <body>
+        <div id="myContainer"></div>
+        <script type="text/babel">
+            var Res=function(){
+                function addText(){
+                    var res1=document.getElementById("inputOne").value
+                    var res2=document.getElementById("inputTwo").value;
+                    document.getElementById("heading").innerHTML=res1+res2;
+                }
+            return <div>
+               <input type="text" id="inputOne"/>
+               <input type="text" id="inputTwo"/>
+               <button onClick={addText}>Add</button>
+               <h1 id="heading"></h1>
+             </div>
+            }
+             ReactDOM.render(<Res/>,document.getElementById("myContainer"));
+        </script> 
+    </body>
+</html>

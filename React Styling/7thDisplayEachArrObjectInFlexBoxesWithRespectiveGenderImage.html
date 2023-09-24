@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    </head>
+    <body>
+        <div id="d1"></div>
+        <script type="text/babel">
+            var Res=function(){
+                var [arr,setArr]=React.useState([{
+                    firstname:"chinna",
+                    lastname:"boda",
+                    age:23,
+                    gender:"male"
+                },
+                {
+                    firstname:"nani",
+                    lastname:"sairam",
+                    age:18,
+                    gender:"male"
+                },
+                {
+                    firstname:"supraja",
+                    lastname:"pamula",
+                    age:21,
+                    gender:"female"
+                },
+            ])
+            var femaleImg="https://cdn.pixabay.com/photo/2014/04/02/14/10/female-306407_640.png";
+            var maleImg="https://i.pinimg.com/736x/2a/4e/8d/2a4e8dab6791ed643d5180bc72167f6d.jpg";
+                return <div>{
+                    arr.map((a) => {
+                            return (
+                                <div style={{ width: "250px", border: '1px solid', padding: '10px', margin: '10px' }}>
+                                    <div style={a.gender === 'female' ? { backgroundColor: 'pink' } : { backgroundColor: 'lightblue' }}>
+                                        <h1>First Name:{a.firstname}</h1>
+                                        <h1>Last Name:{a.lastname}</h1>
+                                        <h1>Age:{a.age}</h1>
+                                        <h1>Gender:{a.gender}</h1>
+                                    </div>
+                                </div>
+                            )
+                        })
+                }
+                    
+                </div>
+            }
+            ReactDOM.render(<Res></Res>,document.getElementById("d1"));
+        </script>
+    </body>
+</html>

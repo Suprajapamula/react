@@ -1,0 +1,52 @@
+<html>
+<head>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+</head>
+<body>
+    <div id="d1"></div>
+    <script type="text/babel">
+        var Res=function(){
+            var [a,setA]=React.useState([
+                {
+                    firstname:"nani",
+                    lasstname:"pamula",
+                    age:18
+                },
+                {
+                    firstname:"ram",
+                    lasstname:"boda",
+                    age:23
+                },
+                {
+                    firstname:"supraja",
+                    lasstname:"pamula",
+                    age:21
+                },
+                {
+                    firstname:"chinna",
+                    lasstname:"pamula",
+                    age:23
+                }
+            ]);
+            return (<div>{
+                <table border="2">{
+                    a.map((person)=>{
+                        return (
+                            <tr>
+                                <td>{person.firstname}</td>
+                                <td>{person.lasstname}</td>
+                                <td>{person.age}</td>
+                            </tr>
+                        )
+                })
+                }
+                </table>
+            } 
+            </div>)
+        }
+     ReactDOM.render(<Res></Res>,document.getElementById("d1"))
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    </head>
+    <body>
+        <div id="myContainer"></div>
+        <script type="text/babel">
+        var Res=function(){
+            var [arr,setArr]=React.useState([{
+                firstname:"supraja",
+                lastname:"pamula",
+                age:21,
+                gender:"female"
+            },
+            {
+                firstname:"sunitha",
+                lastname:"pamula",
+                age:44,
+                gender:"female"
+            },
+            {
+                firstname:"ambadas",
+                lastname:"pamula",
+                age:45,
+                gender:"male"
+            },
+            {
+                firstname:"sairam",
+                lastname:"pamula",
+                age:17,
+                gender:"male"
+            },
+            {
+                firstname:"ram",
+                lastname:"boda",
+                age:22,
+                gender:"male"
+            }
+        ])
+        return(
+            <table border="2">
+                {
+                    <tbody>
+                      {arr.map((person)=>{
+                        return (
+                            <tr>
+                                <td>{person.firstname}</td>
+                                <td>{person.lastname}</td>
+                                <td>{person.age}</td>
+                                <td>{person.gender}</td>
+                            </tr>
+                        );
+                    })}
+                
+                </tbody>
+            }
+            </table>
+        )
+        }
+            ReactDOM.render(<Res></Res>,document.getElementById("myContainer"))
+        </script>
+    </body>
+</html>

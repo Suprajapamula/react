@@ -1,0 +1,115 @@
+<!--<html>
+  <head>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="d3"></div>
+    <script type="text/babel">
+      var sec=20;
+      var msec=0;
+      var interval;
+      function start(){
+        sec=20;
+        msec=0;
+        interval =  setInterval(()=>{
+                      if(msec===0){
+                        msec=59;
+                        sec--;
+                        if(sec===-1){
+                          clearInterval(interval);
+                          sec=0;
+                          msec=0; 
+                        }
+                      }
+                      else{
+                        msec--;
+                      }
+                      document.getElementById("sec").innerHTML=sec;
+                      document.getElementById("msec").innerHTML=msec;
+                    },1)q   
+      }
+      function stop(){
+        clearInterval(interval);
+        sec=0;
+        msec=0;
+        document.getElementById("sec").innerHTML=sec;
+        document.getElementById("msec").innerHTML=msec;
+      }
+      function pause(){
+        clearInterval(interval);
+      }
+      var jh1 = <div>
+                  <h1 id='dd'>
+                    <span id='sec'></span>:
+                    <span id='msec'></span>
+                  </h1>
+                  <button onClick={start}>start</button>
+                  <button onClick={stop}>stop</button>
+                  <button onClick={pause}>pause</button>
+                </div>
+      ReactDOM.render(jh1,document.getElementById("d3"))
+
+      document.getElementById("sec").innerHTML=mins;
+      document.getElementById("msec").innerHTML=secs;
+    </script>
+  </body>
+</html>-->
+<html>
+    <head>
+      <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+      <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+      <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    </head>
+    <body>
+      <div id="d1"></div>
+        <script>
+            var Res=function(){
+              var [msec,setMsec]=React.useState(0);
+              var [sec,setSec]=React.useState(20);
+              function onStart(){
+                   var msec=0;
+                   var sec=20;
+                   var interval=setInterval(()=>{
+                         if(msec===0){
+                          msec=59;
+                          sec--;
+                          if(sec===-1){
+                            clearInterval(interval);
+                          }
+                        }
+                        else{
+                          msec--;
+                        }
+                    document.getElementById("msec").innerHTML=msec;
+                    document.getElementById("sec").innerHTML=sec;
+                   },1)
+                }
+              
+              function onStop(){
+                  clearInterval(interval);
+                  sec=0;
+                  msec=0;
+                  document.getElementById("sec").innerHTML=sec;
+                  document.getElementById("msec").innerHTML=msec;
+              }
+              function onPause(){
+                  clearInterval(interval);
+              }
+              <div>
+               <h1>
+                  <span id="sec"></span>
+                  <span id="msec"></span>
+                </h1>
+                <button onClick={onStart}>Start</button>
+                <button onClick={onStop}>Stop</button>
+                <button onClick={onPause}>Pause</button>
+              </div>
+              ReactDOM.render(<Res></Res>,document.getElementById("d1"));
+              document.getElementById("sec").innerHTML=sec;
+              document.getElementById("sec").innerHTML=msec;
+            }
+        </script>
+    </body>
+</html>

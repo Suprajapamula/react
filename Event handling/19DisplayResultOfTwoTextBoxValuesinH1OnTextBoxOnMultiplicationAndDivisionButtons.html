@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    </head>
+    <body>
+        <div id="myContainer"></div>
+        <script type="text/babel">
+            var Res=function(){
+                function multiplication(){
+                    var res1=document.getElementById("inputOne").value
+                    var res2=document.getElementById("inputTwo").value;
+                    document.getElementById("heading").innerHTML=res1*res2;
+                }
+                function division(){
+                    var res1=document.getElementById("inputOne").value
+                    var res2=document.getElementById("inputTwo").value;
+                    document.getElementById("headingTwo").innerHTML=res1/res2;
+                }
+            return <div>
+               <input type="number" id="inputOne"/>
+               <input type="number" id="inputTwo"/>
+               <button onClick={multiplication}>Multlication</button>
+               <button onClick={division}>Division</button>
+               <h1 id="heading">mulplication:</h1>
+               <h1 id="headingTwo">Division:</h1>
+
+             </div>
+            }
+             ReactDOM.render(<Res/>,document.getElementById("myContainer"));
+        </script> 
+    </body>
+</html>

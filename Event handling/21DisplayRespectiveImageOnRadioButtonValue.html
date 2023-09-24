@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    </head>
+    <body>
+        <div id="myContainer"></div>
+        <script type="text/babel">
+            var femaleImg="https://tse4.mm.bing.net/th?id=OIP.X-YMD17NQrGp3m2VP1kpzQHaJT&pid=Api&P=0&h=180";
+            var maleImg="https://tse4.mm.bing.net/th?id=OIP.wEsBe2udHBieFeZVmus8qAHaHk&pid=Api&P=0&h=180";
+            var Res=function(){
+                function display(e){
+                    if(e.target.value==="female"){
+                        document.getElementById("img").src=femaleImg;
+                    }
+                    else{
+                        document.getElementById("img").src=maleImg;
+                    }
+                
+                }
+            return <div>
+                <input type="radio" value="female" name="radioBtn" onChange={display}/>Female
+                <input type="radio" value="male" name="radioBtn" onChange={display}/>Male
+                <img src="" id="img"/>
+            </div>
+            }
+        ReactDOM.render(<Res></Res>,document.getElementById("myContainer"));
+        </script>
+    </body>
+</html>

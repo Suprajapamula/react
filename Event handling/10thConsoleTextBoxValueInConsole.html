@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    </head>
+    <body>
+        <div id="myContainer"></div>
+        <script type="text/babel">
+            function display(){
+               document.getElementById("heading").innerHTML=document.getElementById("input").value;
+            }
+            var op=<div>
+               <input type="text" id="input"/>
+               <button onClick={display}>click</button>
+               <h1 id="heading"></h1>
+             </div>
+             ReactDOM.render(op,document.getElementById("myContainer"));
+        </script> 
+    </body>
+</html>

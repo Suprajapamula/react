@@ -1,0 +1,24 @@
+<html>
+<head>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+</head>
+<body>
+    <div id="d1"></div>
+    <script type="text/babel">
+        var Res=function(){
+            var arr=["https://tse3.mm.bing.net/th?id=OIP.ifiEjDhz1_JmZx0JCM08GQHaE8&pid=Api&P=0&h=180","https://tse4.mm.bing.net/th?id=OIP.WzHHKD5LlkHy5OIiNaFG3QHaE6&pid=Api&P=0&h=180","https://tse2.mm.bing.net/th?id=OIP.jWHmUuSPU-WZ017Ry-M2zgHaFH&pid=Api&P=0&h=180"]
+            var [x,setX]=React.useState();
+              return <ol>{
+                arr.map((a)=>{
+                    return  <li><img src={a} width="100px"/></li>
+                })
+              } 
+             </ol>
+                   
+        }
+     ReactDOM.render(<Res></Res>,document.getElementById("d1"))
+    </script>
+</body>
+</html>
