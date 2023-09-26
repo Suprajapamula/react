@@ -1,0 +1,139 @@
+<html>
+    <head>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.0/axios.min.js" integrity="sha512-aoTNnqZcT8B4AmeCFmiSnDlc4Nj/KPaZyB5G7JnOnUEkdNpCZs1LCankiYi01sLTyWy+m2P+W4XM+BuQ3Q4/Dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <style>
+            #headingEl{
+                text-align: center;
+            }
+            #mainContainer{
+                background-color: rgb(193, 197, 197);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding-bottom: 20px;
+
+            }
+            .hrEl{
+                width:60px;
+                height:2px;
+                background-color: blue;
+            }
+            #cardContainer{
+                background-color: white;
+                padding:30px;
+                height:500px;
+                width:500px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            #cardContainer:hover{
+                   box-shadow: 2px 2px 8px ;
+            }
+            img{
+                height:250px;
+                width:250px;
+                border-radius: 150px;
+            }
+            #next{
+                background-color: blue;
+                color:azure;
+                border-radius: 4px;
+            }
+            #prev{
+                background-color: blue;
+                color:azure;
+                border-radius: 4px;
+            }
+            #random{
+                background-color: brown;
+                color:aliceblue;
+                margin:5px;
+                border-radius: 4px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="d1"></div>
+        <script type="text/babel">
+            var reviews=[
+                {
+                    src:"https://images.pexels.com/photos/74512/pexels-photo-74512.jpeg?auto=compress&cs=tinysrgb&w=400",
+                    name:"SuprajaPamula",
+                    work:"Frontend Developer",
+                    review:"Helvetica artisan kinfolk thundercats lumbersexual blue bottle. Disrupt glossier gastropub deep v vice franzen hell of brooklyn twee enamel pin fashion axe.photo booth jean shorts artisan narwhal."
+                },
+                {
+                    src:"https://th.bing.com/th/id/R.1c930e969cb6371328d2d707cccde082?rik=mZ08vnS4tUsMQg&riu=http%3a%2f%2fwww.desicomments.com%2fwp-content%2fuploads%2f2017%2f01%2fBeautiful-Pink-Tulip-Flowers-Pic.jpg&ehk=fQGBayFZAMg5YpwuF2RerHjqW%2bLwyDJw%2fnppPl6u5Ik%3d&risl=&pid=ImgRaw&r=0",
+                    name:"SusmithaReddymalla",
+                    work:"Fullstack Developer",
+                    review:"Sriracha literally flexitarian irony, vape marfa unicorn. Glossier tattooed 8-bit, fixie waistcoat offal activated charcoal slow-carb marfa hell of pabst raclette post-ironic jianbing swag."
+                },
+                {
+                    src:"https://th.bing.com/th/id/R.e5e1ee97efb60c85d7b8ee5a007183df?rik=BBHVxDKM6ojH5A&riu=http%3a%2f%2fhdwpro.com%2fwp-content%2fuploads%2f2016%2f02%2fCool-Pink-Flower-1620x1080.jpg&ehk=I1QYVm6SivG%2bcxjY%2fUhmQj0a6HFBuaDu4uC1dYsQEGM%3d&risl=&pid=ImgRaw&r=0",
+                    name:"Anithavangali",
+                    work:"MERN Stack Developer",
+                    review:"Edison bulb put a bird on it humblebrag, marfa pok pok heirloom fashion axe cray stumptown venmo actually seitan. VHS farm-to-table schlitz, edison bulb pop-up 3 wolf moon tote bag street art shabby chic."
+                },
+                {
+                    src:"https://th.bing.com/th/id/R.50ab5b733783a8ab99532c341e9d4f10?rik=P0DUGXUIn72gSQ&riu=http%3a%2f%2fbit.ly%2fXbWPr8&ehk=ZfqBAiV4AHSBweFuOy%2fkhwChdwgNJx4bShapOdwRRgs%3d&risl=&pid=ImgRaw&r=0",
+                    name:"SunithaGadde",
+                    work:"Python Developer",
+                    review:"Helvetica artisan kinfolk thundercats lumbersexual blue bottle. Disrupt glossier gastropub deep v vice franzen hell of brooklyn twee enamel pin fashion axe.photo booth jean shorts artisan narwhal."
+                }
+            ]
+            var i=0;
+           function Reviews(){
+            var [data,setData]=React.useState(reviews[0])
+            function next(){
+                console.log("next")
+                if (i < reviews.length - 1) {
+                    i++;
+                } else {
+                    i = 0;
+                }
+                setData(reviews[i]);
+            }
+
+            var previous=function(){
+                if (i > 0) {
+                    i--;
+                } else {
+                    i = reviews.length - 1;
+                }
+                setData(reviews[i]);
+            }
+            function reset(){
+                var randomIndex=Math.floor((Math.random()*reviews.length))
+                setData(reviews[randomIndex]);
+                i = randomIndex;
+            }
+
+            return(
+                <div id="mainContainer">
+                    <h1 id="headingEl">Edupoly Reviews</h1>
+                    <hr class="hrEl"/>
+                    <div id="cardContainer">
+                        <img src={data.src}/>
+                        <h2>{data.name}</h2>
+                        <h3 style={{color:"blue"}}>{data.work}</h3>
+                        <p>{data.review}</p>
+                        <div>
+                        <button onClick={()=>{next()}} id="next">Next</button>
+                        <button onClick={()=>{reset()}} id="random">Random</button>
+                        <button onClick={()=>{previous()}} id="prev">Previous</button>
+                        
+                        </div>
+                    </div>
+                </div>
+            )
+           }
+           ReactDOM.render(<Reviews/>,document.getElementById("d1"))
+        </script>
+    </body>
+</html>
